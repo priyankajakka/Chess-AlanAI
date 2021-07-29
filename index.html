@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Chess AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple chess AI.">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Google Icons (Material Design) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/5b14db5f0b.js" crossorigin="anonymous"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous">
+        </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Chessboard JS -->
+    <!--<link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"
+        integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU" crossorigin="anonymous">-->
+    <script defer src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"
+        integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD"
+        crossorigin="anonymous"></script>
+
+    <!-- Chess JS (slightly modified) -->
+    <script defer src="js/chess.js"></script>
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+        integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous">
+        </script>
+
+    <!-- Custom JS -->
+    <script defer src="js/main.js"></script>
+</head>
+
+<body style="background-color: lightblue;">
+    <main>
+        <div class="alan-btn"></div>
+        <script type="text/javascript" src="https://studio.alan.app/web/lib/alan_lib.min.js"></script>
+        <script>
+            var alanBtnInstance = alanBtn({
+                key: "7bc3607c9e4b820b358a91e55ae6e0172e956eca572e1d8b807a3e2338fdd0dc/stage",
+                onCommand: function (commandData) {
+                    /*if (commandData.command == "startGame") {
+                        $(startGame);
+                    }*/
+                    if (commandData.command == "updateAdvantage") {
+                        $(updateAdvantage);
+                    }
+                    else if (commandData.command == "undo") { //undo move
+                        $(undo2);
+                    }
+                    else if (commandData.command == "redo") { //redo move
+                        $(redo);
+                    }
+                    else if (commandData.command == "reset") { //reset board
+                        $(reset);
+                    }
+                    else if (commandData.command == "showHint") { //show hint
+                        $(showHint);
+                    }
+                    else if (commandData.command == "compVcomp") { //initiate comp v comp game
+                        $(initCompVComp);
+                    }
+                    else if (commandData.command == "getDepth") { //get proficiency of player
+                        $(getDepth);
+                    }
+                    else if (commandData.command == "showMoves") { //show possible moves for any piece
+                        $(findPossibleMoves(commandData.Square))
+                    }
+                    else if (commandData.command == "movePiece") { //move piece from one sq to other sq
+                        $(onDrop2(commandData.From, commandData.To));
+                    }
+                    else if (commandData.command == "alertStatus") { //alert status
+                        $(checkStatus2('w'));
+                    }
+                    else if (commandData.command == "setDepth") { //set proficiency of other player
+                        $(setDepth(commandData.depthVal));
+                    }
+                    else if (commandData.command == "position") { //choose opening position
+                        $(choosePosition(commandData.position));
+
+                    } else if (commandData.command == "revealOpeningPositions") { //reveal opening position modal
+                        $(revealOpeningPositions());
+
+                    } else if (commandData.command == "hideOpeningPositions") { //hide opening position modal
+                        $(hideOpeningPositions());
+
+                    } else if (commandData.command == "showBoardColors") { //choose opening position
+                        $(changeBoardColors(commandData.color));
+
+                    } else if (commandData.command == "revealBoardColors") { //reveal board colors modal
+                        $(revealBoardColors());
+
+                    } else if (commandData.command == "hideBoardColors") { //hide board colors modal
+                        $(hideBoardColors());
+
+                    } else if (commandData.command == "revealBgColors") { //reveal bg colors modal
+                        $(revealBgColors());
+
+                    } else if (commandData.command == "hideBgColors") { //hide bg colors modal
+                        $(hideBgColors());
+
+                    }else if (commandData.command == "changeBgColor") { //change background color
+                        $(changeBgColor(commandData.color));
+
+                    }
+                },
+                rootEl: document.getElementById("alan-btn"),
+            });
+
+        </script>
+        <div class="container my-3">
+            <h1 class="text-align-center">Voice Enabled Interactive Chess Game w/ Alan AI</h1>
+
+            <div class="modal fade" id="openingPos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content" style="padding: 20px 20px 20px 20px; top: 100px;">
+                        <div class="modal-header">
+                            <h1 class="modal-title" style="color:black" id="exampleModalLabel">Here are possible opening
+                                positions</h1>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" style="color:black; font-size:14px">
+                            1. Ruy Lopez
+                            2. Italian Game
+                            3. Sicilian Defense
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary ButtonNeon"
+                                data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="boardColors" tabindex="-1" role="dialog" aria-labelledby="colorsModal"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content" style="padding: 20px 20px 20px 20px; top: 100px;">
+                        <div class="modal-header">
+                            <h1 class="modal-title" style="color:black" id="colorsModal">Here are possible board colors
+                            </h1>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" style="color:black; font-size:14px">
+                            1. brown
+                            2. blue
+                            3. pink
+                            4. purple
+                            5. green
+                            6. orange
+                            7. gray
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary ButtonNeon"
+                                data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="bgColor" tabindex="-1" role="dialog" aria-labelledby="bgColorsModal"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content" style="padding: 20px 20px 20px 20px; top: 100px;">
+                        <div class="modal-header">
+                            <h1 class="modal-title" style="color:black" id="bgColorsModal">Here are possible background
+                                colors
+                            </h1>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" style="color:black; font-size:14px">
+                            1. red
+                            2. light blue
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary ButtonNeon"
+                                data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row flex-center">
+                <div class="col-md-4">
+                    <div class="container">
+                        <div id="accordionExample" class="accordion shadow">
+                            <div class="card">
+                                <div id="headingOne" class="card-header bg-white shadow-sm border-0">
+                                    <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse"
+                                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+                                            class="d-block position-relative text-dark text-uppercase collapsible-link py-2">Try
+                                            asking ...</a></h6>
+                                </div>
+                                <div id="collapseOne" aria-labelledby="headingOne" class="collapse show">
+                                    <div class="card-body p-5">
+                                        <p class="font-weight-light m-0">
+                                            1. Who's winning?
+                                            <br>
+                                            2. Undo Move.
+                                            <br>
+                                            3. Redo Move.
+                                            <br>
+                                            4. Reset Board.
+                                            <br>
+                                            5. Can you give me a hint?
+                                            <br>
+                                            6. Start computer versus computer.
+                                            <br>
+                                            7. What opening positions can I use?
+                                            <br>
+                                            8. What are the possible moves for the piece at square [alpha][numeric]
+                                            <br>
+                                            9. Move the piece from square [alpha][numeric] to [alpha][numeric]
+                                            <br>
+                                            10. What is the status of the game?
+                                            <br>
+                                            11. What colors can I change the board to?
+                                            <br>
+                                            12. What colors can I change the background to?
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-8" style="margin:auto">
+                    <div id="myBoard"></div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <footer>
+        <p class="text-align-center"> Copyright &copy 2020
+            <a href="https://github.com/zeyu2001/chess-ai">Zhang Zeyu</a>
+        </p>
+    </footer>
+</body>
+
+<script>
+</script>
+
+</html>
