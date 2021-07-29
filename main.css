@@ -1,0 +1,104 @@
+body {
+    background-color: lightblue;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+#myBoard {
+    max-width: 80%;
+    height: auto;
+    margin:auto;
+    overflow: scroll;
+}
+
+.highlight-white {
+    box-shadow: inset 0 0 3px 3px yellow;
+}
+
+.highlight-black {
+    box-shadow: inset 0 0 5px 3px rgb(22, 189, 240);
+}
+
+.highlight-hint {
+    box-shadow: inset 0 0 3px 3px rgb(233, 57, 26);
+}
+
+.no-underline {
+    text-decoration: none;
+}
+
+.no-outline:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-header {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/*! chessboard.js v1.0.0 | (c) 2019 Chris Oakman | MIT License chessboardjs.com/license */
+.clearfix-7da63{
+    clear:both
+    
+}
+
+.board-b72b1{
+    border:2px solid #404040;
+    box-sizing:content-box
+}
+
+.square-55d63{
+    float:left;position:relative;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
+}
+
+/*
+COLORS:
+brown - #f0d9b5, #b58863
+blue - #96c2eb, #6376b5
+pink - #f1c0ed, #d64d86
+purple - #cfa9f3, #af4ef0
+green - #83ecc1, #24ad8b
+orange - #ecb283, #c58235
+gray - #9899aa, #424752
+
+*/
+
+.white-1e1d7{
+    background-color:#f0d9b5;
+    color:black;
+}
+
+.black-3c85d{
+    background-color:#b58863;
+    color:white;
+}
+
+.highlight1-32417,.highlight2-9c5d2{
+    box-shadow:inset 0 0 3px 3px #ff0
+}
+
+.notation-322f9{
+    cursor:default;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:14px;
+    position:absolute
+}
+
+.alpha-d2270{
+    bottom:1px;
+    right:3px
+}
+
+.numeric-fc462{
+    top:2px;
+    left:2px
+}
