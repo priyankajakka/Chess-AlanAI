@@ -7,6 +7,8 @@
 
 var STACK_SIZE = 100;                 // maximum size of undo stack
 
+var subtitles = false;
+
 var board = null
 var $board = $('#myBoard')
 var game = new Chess()
@@ -504,8 +506,28 @@ function reset() {
  * Event listeners for various buttons.
  */
 
+ function enableSubs(){
+     subtitles = true;
+     alanBtnInstance.playText("Subtitles are now enabled")
+     document.getElementById("subtitles").innerText = "Subtitles are now enabled";
+
+ }
+
+ function disableSubs(){
+    subtitles = false;
+    alanBtnInstance.playText("Subtitles are now disabled")
+    document.getElementById("subtitles").innerText = "";
+}
+
 function revealBgColors() {
     $('#bgColor').modal('show');
+
+    if(subtitles == true){
+        document.getElementById("subtitles").innerText = "You can choose any of the following background colors: red, light blue.\n";
+        document.getElementById("subtitles").innerText += "Which one do you want to choose?";
+    }
+    alanBtnInstance.playText("You can choose any of the following background colors: red, blue, green, purple, gray.");
+    alanBtnInstance.playText("Which one do you want to choose?");
 }
 
 function hideBgColors() {
@@ -513,10 +535,53 @@ function hideBgColors() {
 }
 
 function changeBgColor(color) {
-    if(color == 'red'){
-        document.body.style.backgroundColor = "red";
-    }else{
-        document.body.style.backgroundColor = "lightblue";
+
+    if(subtitles == true){
+        document.getElementById("subtitles").innerText = "Okay. Background color is now ";
+        document.getElementById("subtitles").innerText += color;
+    }
+
+    alanBtnInstance.playText("Okay. Background color is now " + color);
+
+    if(color == 'red' || color == 'Red'){
+        document.body.style.backgroundColor = "#BF0F2C";
+        document.getElementById("moving-pieces").style.color = "#BF0F2C";
+        document.getElementById("check-status").style.color = "#BF0F2C";
+        document.getElementById("change-settings").style.color = "#BF0F2C";
+        document.getElementById("other").style.color = "#BF0F2C";
+
+
+    }else if(color == 'blue' || color == 'Blue'){
+        document.body.style.backgroundColor = "#1586B6";
+        document.getElementById("moving-pieces").style.color = "#1586B6";
+        document.getElementById("check-status").style.color = "#1586B6";
+        document.getElementById("change-settings").style.color = "#1586B6";
+        document.getElementById("other").style.color = "#1586B6";
+
+
+    }else if(color == 'green' || color == 'Green'){
+        document.body.style.backgroundColor = "#14A85B";
+        document.getElementById("moving-pieces").style.color = "#14A85B";
+        document.getElementById("check-status").style.color = "#14A85B";
+        document.getElementById("change-settings").style.color = "#14A85B";
+        document.getElementById("other").style.color = "#14A85B";
+
+
+    }else if(color == 'purple' || color == 'Purple'){
+        document.body.style.backgroundColor = "#8113A0";
+        document.getElementById("moving-pieces").style.color = "#8113A0";
+        document.getElementById("check-status").style.color = "#8113A0";
+        document.getElementById("change-settings").style.color = "#8113A0";
+        document.getElementById("other").style.color = "#8113A0";
+
+
+    }else if(color == 'gray' || color == 'Gray'){
+        document.body.style.backgroundColor = "#3F3841";
+        document.getElementById("moving-pieces").style.color = "#3F3841";
+        document.getElementById("check-status").style.color = "#3F3841";
+        document.getElementById("change-settings").style.color = "#3F3841";
+        document.getElementById("other").style.color = "#3F3841";
+
     }
 }
 
@@ -530,6 +595,12 @@ function hideOpeningPositions() {
 
 function revealBoardColors() {
     $('#boardColors').modal('show');
+    if(subtitles == true){
+        document.getElementById("subtitles").innerText = "You can choose any of the following board colors: brown, blue, pink, purple, green, orange, gray.";
+        document.getElementById("subtitles").innerText += "Which one do you want to choose?";
+    }
+    alanBtnInstance.playText("You can choose any of the following board colors: brown, blue, pink, purple, green, orange, gray.");
+    alanBtnInstance.playText("Which one do you want to choose?");
 }
 
 function hideBoardColors() {
@@ -537,25 +608,32 @@ function hideBoardColors() {
 }
 
 function changeBoardColors(color) {
-    if (color == 'brown') {
+    if(subtitles == true){
+        document.getElementById("subtitles").innerText = "Okay. Board color scheme is now ";
+        document.getElementById("subtitles").innerText += color;
+    }
+
+    alanBtnInstance.playText("Okay. Board color scheme is now " + color);
+
+    if (color == 'brown' || color == 'Brown') {
         whiteSquare = '#f0d9b5'
         blackSquare = '#b58863'
-    } else if (color == 'blue') {
+    } else if (color == 'blue' || color == 'Blue') {
         whiteSquare = '#96c2eb'
         blackSquare = '#6376b5'
-    } else if (color == 'pink') {
+    } else if (color == 'pink' || color == 'Pink') {
         whiteSquare = '#f1c0ed'
         blackSquare = '#d64d86'
-    } else if (color == 'purple') {
+    } else if (color == 'purple' || color == 'Purple') {
         whiteSquare = '#cfa9f3'
         blackSquare = '#af4ef0'
-    } else if (color == 'green') {
+    } else if (color == 'green' || color == 'Green') {
         whiteSquare = '#83ecc1'
         blackSquare = '#24ad8b'
-    } else if (color == 'orange') {
+    } else if (color == 'orange' || color == 'Orange') {
         whiteSquare = '#ffcc99'
         blackSquare = '#ffa500'
-    } else if (color == 'gray') {
+    } else if (color == 'grey' || color == 'Grey') {
         whiteSquare = '#9899aa'
         blackSquare = '#424752'
     }
