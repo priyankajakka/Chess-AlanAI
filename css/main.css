@@ -7,10 +7,10 @@ body {
 }
 
 #myBoard {
-    max-width: 80%;
+    width: auto;
     height: auto;
     margin:auto;
-    overflow: scroll;
+    /*overflow: scroll;*/
 }
 
 .highlight-white {
